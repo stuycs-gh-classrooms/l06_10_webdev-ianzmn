@@ -1,79 +1,69 @@
-var arr;
-var pos; //the current spot we want to find
-var smallPos; //the position of the smallest element we've found so far
-var testPos; //the current position we are testing
+var second;
+var minute;
+var hour;
+var x;
+var y; 
 
-function setup() {
-  createCanvas(400, 400);
-  background(0);
-  arr = randomArray(20);
-
-  pos = 0;
-  testPos = pos + 1;
-  smallPos = 0;
+function setup () { 
+  createCanvas(600,600);
+  second = second();
+  minute = minute();
+  hour = hour();
+ background (#A8DDED) ;
+  x = width/2;
+  y = height/2;
+ frameRate(1);
 }
 
-function draw() {
-  background(0);
-  
-  if (pos == arr.length - 1) { //, then we're sorted! display
-    displayArray(arr, -1, -1, -1);
-  }
-  
-  else { 
-     displayArray(arr, pos, testPos, smallPos);
-    //compare elements at testPos and smallPos
-   
-    if (arr[testPos] < arr[smallPos]) {
-    smallPos = testPos;
-    }
-    
-    testPos += 1;
-    
-    if (testPos == arr.length) {
-    swap(arr, pos, smallPos);
-    pos += 1;
-    testPos = pos + 1;
-    smallPos = pos;
-    }
+function draw() { 
+ updateTime();
+ print(second + " " + minute + " " + hour);
+ background(#A8DDED);
+ clockFace();
+ drawHand();
 }
-  
-  function swap(int, arr, i0, i1) {
-  var int = Array[i0];
-  Array[i0] = Array[i1];
-  Array[i1] = t;
-}//swap
-  
-  function randomArray(num) {
-  var values = new Array(num);
 
-  for (var i=0; i<values.length; i++) {
-    values[i] = int(random(100, 400));
-  }//random value loop
-  return values;
-}//randomArray
+function clockFace() {
+  fill(0);
+  stroke(0);
+  strokeWeight(1);
+  circle (x,y, 400);
+}
+
+function drawHand() {
+  //call timetoAngle
+  stroke(255);//second
+  line(x,y,x - (160*cos(timeToAngle (second, 0))), y - (160*sin(timeToAngle (second,0))));
   
-  function displayArray (arr, p, tp, sp) {
-  var barWidth = width / arr.length;
-  var x = 0;
-  var y = 0;
-  noStroke();
-  for (var i=0; i<arr.length; i++) {
-    y = height - arr[i];
-    if (i == p ) {
-      fill(230, 0, 230);
-    }
-    else if (i == tp) {
-      fill(0, 230, 230);
-    }
-    else if (i == sp) {
-      fill(230, 230, 0);
-    }
-    else {
-      fill(255);
-    }
-    rect(x, y, barWidth, arr[i]);
-    x+= barWidth;
+  stroke(#C0C0C0);//minute
+  strokeWeight(3);
+  line(x,y,x-(120*cos(timeToAngle(minute, 0))), y-(120*sin(timeToAngle (minute,0))));
+  
+  stroke (#d4af37) ;//hour
+  strokeWeight (5) ;
+  line (x,y,x - (90*cos(timeToAngle (hour, 1))),y- (90*sin(timeToAngle (hour,1))));
+} 
+
+function updateTime () {
+  second +=1 ; 
+  if (second >= 60) {
+    second = 0 ; 
+    minute = minute + 1 ; 
+    if (minute>=60) {
+      minute = 0 ;
+       
+      if (hour>=12) {
+         hour = 0 ;
+        }}}
+     
+}
+
+
+function timeToAngle (int time, int a) {
+  if (a == 0) {
+    return radians((time*6)+90 );
+  } else if (a == 1) {
+    return radians((time*30)+90) ;
   }
-}//displayArray
+ return 0.0 ;
 }
