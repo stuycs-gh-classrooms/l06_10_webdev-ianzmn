@@ -76,3 +76,4 @@ function draw() {
     x+= barWidth;
   }
 }//displayArray
+}
