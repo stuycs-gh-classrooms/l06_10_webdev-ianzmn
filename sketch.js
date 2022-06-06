@@ -45,7 +45,7 @@ function draw() {
 }//swap
   
   function randomArray(num) {
-  Array values = new Array(num);
+  Array values = new Array[num];
 
   for (var i=0; i<values.length; i++) {
     values[i] = int(random(100, 400));
