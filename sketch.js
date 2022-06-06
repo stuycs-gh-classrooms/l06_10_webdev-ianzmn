@@ -59,7 +59,7 @@ function updateTime () {
 }
 
 
-function timeToAngle (int time, int a) {
+function timeToAngle (time, a) {
   if (a == 0) {
     return radians((time*6)+90 );
   } else if (a == 1) {
