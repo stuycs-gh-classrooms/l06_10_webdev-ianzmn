@@ -9,7 +9,7 @@ function setup() {
   second = second();
   minute = minute();
   hour = hour();
-  background(255) ;
+  background(255);
   x = width/2;
   y = height/2;
  frameRate(1);
