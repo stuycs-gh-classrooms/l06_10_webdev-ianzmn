@@ -1,11 +1,11 @@
-var second;
-var minute;
-var hour;
-var x;
-var y; 
+let second;
+let minute;
+let hour;
+let x;
+let y; 
 
 function setup () { 
-  createCanvas(600,600);
+  createCanvas(600,600,0);
   second = second();
   minute = minute();
   hour = hour();
