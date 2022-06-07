@@ -1,15 +1,15 @@
-let second;
-let minute;
-let hour;
-let x;
-let y; 
+var second;
+var minute;
+var hour;
+var x;
+var y; 
 
-function setup () { 
+function setup() { 
   createCanvas(600,600,0);
   second = second();
   minute = minute();
   hour = hour();
-  background(#A8DDED) ;
+  background(255) ;
   x = width/2;
   y = height/2;
  frameRate(1);
@@ -18,7 +18,7 @@ function setup () {
 function draw() { 
  updateTime();
  print(second + " " + minute + " " + hour);
- background(#A8DDED);
+ background(255);
  clockFace();
  drawHand();
 }
@@ -39,12 +39,12 @@ function drawHand() {
   strokeWeight(3);
   line(x,y,x-(120*cos(timeToAngle(minute, 0))), y-(120*sin(timeToAngle (minute,0))));
   
-  stroke (#d4af37) ;//hour
-  strokeWeight (5) ;
-  line (x,y,x - (90*cos(timeToAngle (hour, 1))),y- (90*sin(timeToAngle (hour,1))));
+  stroke(#d4af37) ;//hour
+  strokeWeight(5) ;
+  line(x,y,x - (90*cos(timeToAngle (hour, 1))),y- (90*sin(timeToAngle (hour,1))));
 } 
 
-function updateTime () {
+function updateTime() {
   second +=1 ; 
   if (second >= 60) {
     second = 0 ; 
@@ -54,16 +54,16 @@ function updateTime () {
        
       if (hour>=12) {
          hour = 0 ;
-        }}}
-     
+        }
+    }
+  }     
 }
-
 
 function timeToAngle (time, a) {
   if (a == 0) {
     return radians((time*6)+90 );
   } else if (a == 1) {
-    return radians((time*30)+90) ;
+    return radians((time*30)+90);
   }
- return 0.0 ;
+ return 0.0;
 }
